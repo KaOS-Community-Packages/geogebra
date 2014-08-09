@@ -1,5 +1,5 @@
 pkgname=geogebra
-pkgver=4.4.37.0
+pkgver=4.4.42.0
 pkgrel=1
 pkgdesc='Dynamic mathematics software with interactive graphics, algebra and spreadsheet'
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('java-runtime' 'shared-mime-info' 'hicolor-icon-theme' 'xdg-utils'
          'desktop-file-utils' 'gsl')
 install=geogebra.install
 source=(http://download.geogebra.org/installers/4.4/GeoGebra-Linux-Installer-$pkgver.tar.gz)
-md5sums=('81c2ef17f90354549a9d864938790072')
+md5sums=('22f33733ed1996ae911d4ffd9010ad2a')
 
 package() {
   install -dm755 "$pkgdir"/usr/bin \
