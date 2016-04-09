@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=GeoGebra
+Icon=geogebra
+Exec="/usr/bin/geogebra"
+Comment=Dynamic mathematics software
+Categories=Science
+Terminal=false

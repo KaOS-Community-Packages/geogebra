@@ -1,5 +1,5 @@
 pkgname=geogebra
-pkgver=4.4.42.0
+pkgver=5.0.225.0
 pkgrel=1
 pkgdesc='Dynamic mathematics software with interactive graphics, algebra and spreadsheet'
 arch=('x86_64')
@@ -7,19 +7,26 @@ url='http://www.geogebra.org/'
 license=('GPL3' 'CCPL:by-sa' 'CCPL:by-nc')
 depends=('java-runtime' 'shared-mime-info' 'hicolor-icon-theme' 'xdg-utils'
          'desktop-file-utils' 'gsl')
-install=geogebra.install
-source=(http://download.geogebra.org/installers/4.4/GeoGebra-Linux-Installer-$pkgver.tar.gz)
-md5sums=('22f33733ed1996ae911d4ffd9010ad2a')
+install=$pkgname.install
+source=(http://download.geogebra.org/installers/5.0/GeoGebra-Linux-Portable-${pkgver}.tar.bz2  $pkgname.desktop $pkgname.svg)
+md5sums=('f48def6e969ba51f82dda898ad0e2fff'
+         'df1ea016e2c0372f93f965514926762a'
+         '863782da033f1a337e688b544afb7d07')
+
+
+prepare() {
+    echo -en '#!/bin/sh\nexport GG_CONFIG_PATH="$HOME"\nexport JAVACMD="/usr/bin/java"\nexec "/usr/share/geogebra/geogebra" "$@"' > $srcdir/$pkgname
+}
 
 package() {
-  install -dm755 "$pkgdir"/usr/bin \
+    install -dm755 "$pkgdir"/usr/bin \
     "$pkgdir"/usr/share/applications \
-    "$pkgdir"/usr/share/geogebra
+    "$pkgdir"/usr/share/geogebra \
+    "$pkgdir"/usr/share/icons/hicolor/scalable/apps
 
-  cd $pkgname-$pkgver
-  sed -i 's/\/usr/\$\{pkgdir\}\/usr/g' install.sh
-  source install.sh
-  install -Dm644 _license.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-
-  rm -rf "$pkgdir"/usr/share/mime/
-} 
+    install "GeoGebra-Linux-Portable-$pkgver/geogebra/"* -t "${pkgdir}/usr/share/geogebra/"
+    install -Dm644 $srcdir/$pkgname "${pkgdir}/usr/bin/"
+    chmod   +x $pkgdir/usr/bin/$pkgname
+    install -Dm644 $srcdir/$pkgname.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    install -Dm644 $srcdir/$pkgname.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+}
