@@ -1,5 +1,5 @@
 pkgname=geogebra
-pkgver=5.0.249.0
+pkgver=5.0.254.0
 pkgrel=1
 pkgdesc='Dynamic mathematics software with interactive graphics, algebra and spreadsheet'
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('java-runtime' 'shared-mime-info' 'hicolor-icon-theme' 'xdg-utils'
          'desktop-file-utils' 'gsl')
 install=$pkgname.install
 source=(http://download.geogebra.org/installers/5.0/GeoGebra-Linux-Portable-${pkgver}.tar.bz2  $pkgname.desktop $pkgname.svg)
-md5sums=('dc6b71a67f71616e2a99d6392be2d1a8'
+md5sums=('01af6a5d0420365091adad94bdd73634'
          'df1ea016e2c0372f93f965514926762a'
          '863782da033f1a337e688b544afb7d07')
 
