@@ -7,7 +7,6 @@ url='http://www.geogebra.org/'
 license=('GPL3' 'CCPL:by-sa' 'CCPL:by-nc')
 depends=('java-runtime' 'shared-mime-info' 'hicolor-icon-theme' 'xdg-utils'
          'desktop-file-utils' 'gsl')
-install=$pkgname.install
 source=(http://download.geogebra.org/installers/5.0/GeoGebra-Linux-Portable-${pkgver}.tar.bz2  $pkgname.desktop $pkgname.svg)
 md5sums=('ec8f90e08e318d5ead57a8b2630c9b4b'
          'df1ea016e2c0372f93f965514926762a'
